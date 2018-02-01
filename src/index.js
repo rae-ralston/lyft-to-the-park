@@ -1,37 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+
 import './styles/index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import rootReducer from './reducers/index'
 
-let defaultState = {
-  isModalOpen: false,
+function configureStore(initialState) {
+  return createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(thunk)
+  )
 }
 
-const TOGGLE_REQUEST_MODAL = 'TOGGLE_REQUEST_MODAL'
-
-//actions
-export function toggleRequestModal() {
-  return {
-    type: TOGGLE_REQUEST_MODAL
-  }
-}
-//reducer
-function reducer (state = defaultState, action) {
-  console.log('in reducer', action)
-  switch (action.type) {
-    case TOGGLE_REQUEST_MODAL:
-      console.log('in TOGGLE_REQUEST_MODAL')
-      return { ...state, isModalOpen: !state.isModalOpen }
-    default:
-      return state
-  }
-}
-
-//combine reducer
-let store = createStore(reducer)
+let store = configureStore()
+// store.subscribe(() => console.log('store ==>', store.getState()))
 
 ReactDOM.render(
   <Provider store={ store }>
