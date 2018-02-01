@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { connect } from 'react-redux'
 
 import loading from '../loading.gif'
@@ -9,29 +8,14 @@ import { toggleRequestModal } from '../actions/modal'
 import { NPSFetchData } from '../actions/campsites'
 
 class CampsiteList extends Component {
-  state = {
-    campSites: [],
-    isLoading: false,
-    hasErrored: false,
-  }
-
   componentDidMount() {
-    this.fetchCampsiteInfo()
-  }
-
-  fetchCampsiteInfo() {
     const NPS_API_KEY = process.env.REACT_APP_NPS_API_KEY
     let url = `https://developer.nps.gov/api/v1/campgrounds?stateCode=CA&api_key=${ NPS_API_KEY }`
-    axios.get(url)
-      .then(res => {
-        console.log(res)
-        this.setState({ campSites: res.data.data })
-      })
-      .catch(e => console.log("ERROR in fetchCampsiteInfo:", e))
+    this.props.NPSFetchData(url)
   }
 
   render() {
-    let campsites = this.state.campSites.map( campsite =>
+    let campsites = this.props.campsites.map( campsite =>
       campsite.latLong ?
         <CampsiteListing
           key={ campsite.id }
@@ -40,15 +24,21 @@ class CampsiteList extends Component {
         /> :
         null
     )
-    console.log('props in campsiteList', this.props)
+
     return (
       <div style={{ position: 'relative' }}>
-        { this.state.campSites.length === 0 ?
-            <img src={ loading } alt="loading spinner" /> :
-            campsites }
+        { this.props.campsiteHasErrored ?
+          <p>Sorry! There was an error loading campsite data</p> :
+          null
+        }
+        { this.props.campsiteIsLoading ?
+          <img src={ loading } alt="loading spinner" /> :
+          campsites
+        }
         { this.props.isModalOpen ?
-            <RequestModal toggleRequestModal={ this.props.toggleRequestModal } /> :
-            null }
+          <RequestModal toggleRequestModal={ this.props.toggleRequestModal } /> :
+          null
+        }
       </div>
     )
   }
@@ -56,9 +46,13 @@ class CampsiteList extends Component {
 
 function mapStateToProps(state) {
   return {
-    isModalOpen: state.modal.isModalOpen
+    isModalOpen: state.modal.isModalOpen,
+    campsiteHasErrored: state.campsiteHasErrored,
+    campsiteIsLoading: state.campsiteIsLoading,
+    campsites: state.NPSFetchSuccess,
   }
 }
+
 
 export default connect(mapStateToProps, {
   toggleRequestModal,
