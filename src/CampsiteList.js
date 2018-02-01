@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import lyft from 'node-lyft';
+import { connect } from 'react-redux'
 
 import loading from './loading.gif'
 import CampsiteListing from './CampsiteListing'
 import RequestModal from './RequestModal'
+import { toggleRequestModal } from './index.js'
 
-export default class CampsiteList extends Component {
+class CampsiteList extends Component {
   state = {
     campSites: [],
-    isRequestModalOpen: false
+    // isRequestModalOpen: false
   }
 
   componentDidMount() {
@@ -24,27 +25,9 @@ export default class CampsiteList extends Component {
       .catch(e => console.log("ERROR in fetchCampsiteInfo:", e))
   }
 
-  toggleRequestModal = () => {
-    this.setState({ isRequestModalOpen: !this.state.isRequestModalOpen })
-  }
-
-  fetchLyftInfo(lat, lng) {
-    const LYFT_ACCESS_TOKEN = process.env.REACT_APP_LYFT_ACCESS_TOKEN
-    let defaultClient = lyft.ApiClient.instance;
-    let userAuth = defaultClient.authentications['User Authentication'];
-    userAuth.accessToken = LYFT_ACCESS_TOKEN;
-
-    // TODO: MAKE SURE YOU'RE IN THE SANDBOX!
-    let apiInstance = new lyft.UserApi();
-    let request = new lyft.Ride('lyft', new lyft.Location(37.77663, -122.39227));
-    request.destination = new lyft.Location(lat, lng);
-
-    apiInstance.newRide(request).then((data) => {
-      console.log('API called successfully. Returned data: ' + data);
-    }, (error) => {
-      console.error(error);
-    });
-  }
+  // toggleRequestModal = () => {
+  //   this.setState({ isRequestModalOpen: !this.state.isRequestModalOpen })
+  // }
 
   render() {
     let campsites = this.state.campSites.map( campsite =>
@@ -52,20 +35,28 @@ export default class CampsiteList extends Component {
         <CampsiteListing
           key={ campsite.id }
           campsite={ campsite }
-          toggleRequestModal={ this.toggleRequestModal }
+          toggleRequestModal={ this.props.toggleRequestModal }
         /> :
         null
     )
-    
+    console.log("MAXPROPS CampsiteList",this.props)
     return (
       <div style={{ position: 'relative' }}>
         { this.state.campSites.length === 0 ?
             <img src={ loading } alt="loading spinner" /> :
             campsites }
-        { this.state.isRequestModalOpen ?
-            <RequestModal toggleRequestModal={ this.toggleRequestModal } /> :
+        { this.props.isModalOpen ?
+            <RequestModal toggleRequestModal={ this.props.toggleRequestModal } /> :
             null }
       </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    isModalOpen: state.isModalOpen
+  }
+}
+
+export default connect(mapStateToProps, { toggleRequestModal })(CampsiteList)
