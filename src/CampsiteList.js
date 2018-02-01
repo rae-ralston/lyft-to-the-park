@@ -32,9 +32,8 @@ export default class CampsiteList extends Component {
     const LYFT_ACCESS_TOKEN = process.env.REACT_APP_LYFT_ACCESS_TOKEN
     let defaultClient = lyft.ApiClient.instance;
     let userAuth = defaultClient.authentications['User Authentication'];
-    userAuth.accessToken = LYFT_ACCESS_TOKEN;
+    userAuth.accessToken = LYFT_ACCESS_TOKEN; //... is this the right token? should be - 'YOUR-CLIENT-TOKEN';
 
-    // TODO: MAKE SURE YOU'RE IN THE SANDBOX!
     let apiInstance = new lyft.UserApi();
     let request = new lyft.Ride('lyft', new lyft.Location(37.77663, -122.39227));
     request.destination = new lyft.Location(lat, lng);
@@ -46,17 +45,28 @@ export default class CampsiteList extends Component {
     });
   }
 
+  // TODO fix me, lyft isn't hooked up to anything
+  // getACar = (location) => {
+  //   <a href=`https://lyft.com/ride?id=lyft
+  //     &pickup%5Blatitude%5D=37.7758&pickup%5Blongitude%5D=-122.4171
+  //     &destination%5Blatitude%5D=37.7872&destination%5Blongitude%5D=-122.4166
+  //     &partner=YOUR_CLIENT_ID`>
+  // <img src="images/lyft.png">
+  // </a>
+  // }
+
   render() {
     let campsites = this.state.campSites.map( campsite =>
       campsite.latLong ?
         <CampsiteListing
           key={ campsite.id }
           campsite={ campsite }
+          location={ campsite.latLong }
           toggleRequestModal={ this.toggleRequestModal }
         /> :
         null
     )
-    
+
     return (
       <div style={{ position: 'relative' }}>
         { this.state.campSites.length === 0 ?
