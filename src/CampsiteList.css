@@ -1,0 +1,17 @@
+.campsite {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.campsite__wordsCol {
+  width: 80vw;
+}
+
+.campsite__actCol {
+  width: 20vw;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
