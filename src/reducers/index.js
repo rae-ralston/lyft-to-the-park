@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux'
 import modal from './modal'
-import campsites from './campsites'
+import {
+  campsiteIsLoading,
+  campsiteHasErrored,
+  NPSFetchSuccess
+} from './campsites'
 
 const rootReducer = combineReducers({
   modal,
-  campsites,
+  campsiteIsLoading,
+  campsiteHasErrored,
+  NPSFetchSuccess,
 })
 
 export default rootReducer

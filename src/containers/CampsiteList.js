@@ -6,6 +6,7 @@ import loading from '../loading.gif'
 import CampsiteListing from '../components/CampsiteListing'
 import RequestModal from '../components/RequestModal'
 import { toggleRequestModal } from '../actions/modal'
+import { NPSFetchData } from '../actions/campsites'
 
 class CampsiteList extends Component {
   state = {
@@ -22,7 +23,10 @@ class CampsiteList extends Component {
     const NPS_API_KEY = process.env.REACT_APP_NPS_API_KEY
     let url = `https://developer.nps.gov/api/v1/campgrounds?stateCode=CA&api_key=${ NPS_API_KEY }`
     axios.get(url)
-      .then(res => this.setState({ campSites: res.data.data }))
+      .then(res => {
+        console.log(res)
+        this.setState({ campSites: res.data.data })
+      })
       .catch(e => console.log("ERROR in fetchCampsiteInfo:", e))
   }
 
@@ -56,4 +60,7 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { toggleRequestModal })(CampsiteList)
+export default connect(mapStateToProps, {
+  toggleRequestModal,
+  NPSFetchData,
+})(CampsiteList)
