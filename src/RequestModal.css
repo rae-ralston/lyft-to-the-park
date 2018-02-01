@@ -1,0 +1,8 @@
+.modal {
+  width: 50vw;
+  height: 50vh;
+  background-color: rgba(100, 100, 100, .8);
+  position:relative;
+  top: 0;
+  left: 0;
+}
