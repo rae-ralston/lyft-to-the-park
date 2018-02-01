@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CampsiteList from './CampsiteList'
-import './App.css';
+import CampsiteList from '../containers/CampsiteList'
+import '../styles/App.css';
 
 class App extends Component {
   render() {

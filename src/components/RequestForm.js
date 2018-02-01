@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { convertToURI } from './helpers'
+import { convertToURI } from '../helpers'
 
 export default class RequestForm extends Component {
   state = {
