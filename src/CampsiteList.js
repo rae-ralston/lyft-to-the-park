@@ -34,6 +34,7 @@ export default class CampsiteList extends Component {
     let userAuth = defaultClient.authentications['User Authentication'];
     userAuth.accessToken = LYFT_ACCESS_TOKEN;
 
+    // TODO: MAKE SURE YOU'RE IN THE SANDBOX!
     let apiInstance = new lyft.UserApi();
     let request = new lyft.Ride('lyft', new lyft.Location(37.77663, -122.39227));
     request.destination = new lyft.Location(lat, lng);
@@ -65,7 +66,7 @@ export default class CampsiteList extends Component {
         {
           this.state.isRequestModalOpen ?
             <RequestModal toggleRequestModal={ this.toggleRequestModal } /> :
-            ""
+            null
         }
       </div>
     )

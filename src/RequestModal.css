@@ -1,8 +1,25 @@
 .modal {
   width: 50vw;
   height: 50vh;
-  background-color: rgba(100, 100, 100, .8);
-  position:relative;
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 10%
+  /* position:relative;
   top: 0;
+  left: 0; */
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(0, 242, 96, .8),
+    rgba(5, 117, 230, .8)
+  );
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  padding: 20vh 20vw;
 }
