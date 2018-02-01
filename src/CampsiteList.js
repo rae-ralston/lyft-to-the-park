@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import lyft from 'node-lyft';
+
 import loading from './loading.gif'
 import CampsiteListing from './CampsiteListing'
 import RequestModal from './RequestModal'
-require('dotenv').config()
 
 export default class CampsiteList extends Component {
   state = {
@@ -18,7 +18,7 @@ export default class CampsiteList extends Component {
 
   fetchCampsiteInfo() {
     const NPS_API_KEY = process.env.REACT_APP_NPS_API_KEY
-    let url = `https://developer.nps.gov/api/v1/campgrounds?stateCode=CA&api_key=${NPS_API_KEY}`
+    let url = `https://developer.nps.gov/api/v1/campgrounds?stateCode=CA&api_key=${ NPS_API_KEY }`
     axios.get(url)
       .then(res => this.setState({ campSites: res.data.data }))
       .catch(e => console.log("ERROR in fetchCampsiteInfo:", e))
@@ -54,20 +54,17 @@ export default class CampsiteList extends Component {
           campsite={ campsite }
           toggleRequestModal={ this.toggleRequestModal }
         /> :
-        ""
+        null
     )
+    
     return (
       <div style={{ position: 'relative' }}>
-        {
-          this.state.campSites.length === 0 ?
+        { this.state.campSites.length === 0 ?
             <img src={ loading } alt="loading spinner" /> :
-            campsites
-        }
-        {
-          this.state.isRequestModalOpen ?
+            campsites }
+        { this.state.isRequestModalOpen ?
             <RequestModal toggleRequestModal={ this.toggleRequestModal } /> :
-            null
-        }
+            null }
       </div>
     )
   }

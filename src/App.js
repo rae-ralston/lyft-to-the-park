@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import CampsiteList from './CampsiteList'
 import './App.css';
-// import 'dotenv'
-// import GOOGLE_API_KEY from process.env.GOOGLE_API_KEY
 
 class App extends Component {
   render() {
