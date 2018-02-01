@@ -10,7 +10,6 @@ import { toggleRequestModal } from '../index.js'
 class CampsiteList extends Component {
   state = {
     campSites: [],
-    // isRequestModalOpen: false
   }
 
   componentDidMount() {
@@ -25,10 +24,6 @@ class CampsiteList extends Component {
       .catch(e => console.log("ERROR in fetchCampsiteInfo:", e))
   }
 
-  // toggleRequestModal = () => {
-  //   this.setState({ isRequestModalOpen: !this.state.isRequestModalOpen })
-  // }
-
   render() {
     let campsites = this.state.campSites.map( campsite =>
       campsite.latLong ?
@@ -39,7 +34,7 @@ class CampsiteList extends Component {
         /> :
         null
     )
-    console.log("MAXPROPS CampsiteList",this.props)
+
     return (
       <div style={{ position: 'relative' }}>
         { this.state.campSites.length === 0 ?
