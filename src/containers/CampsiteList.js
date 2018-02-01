@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
-import loading from './loading.gif'
-import CampsiteListing from './CampsiteListing'
-import RequestModal from './RequestModal'
-import { toggleRequestModal } from './index.js'
+import loading from '../loading.gif'
+import CampsiteListing from '../components/CampsiteListing'
+import RequestModal from '../components/RequestModal'
+import { toggleRequestModal } from '../index.js'
 
 class CampsiteList extends Component {
   state = {

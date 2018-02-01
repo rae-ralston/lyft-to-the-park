@@ -1,5 +1,5 @@
 import React from 'react'
-import './CampsiteListing.css'
+import '../styles/CampsiteListing.css'
 
 const CampsiteListing = (props) => {
   const { campsite } = props

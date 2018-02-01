@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import RequestForm from './RequestForm'
-import './RequestModal.css'
+import '../styles/RequestModal.css'
 
 export default class RequestModal extends Component {
   render() {
