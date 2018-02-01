@@ -5,11 +5,13 @@ import { connect } from 'react-redux'
 import loading from '../loading.gif'
 import CampsiteListing from '../components/CampsiteListing'
 import RequestModal from '../components/RequestModal'
-import { toggleRequestModal } from '../index.js'
+import { toggleRequestModal } from '../actions/modal'
 
 class CampsiteList extends Component {
   state = {
     campSites: [],
+    isLoading: false,
+    hasErrored: false,
   }
 
   componentDidMount() {
@@ -34,7 +36,7 @@ class CampsiteList extends Component {
         /> :
         null
     )
-
+    console.log('props in campsiteList', this.props)
     return (
       <div style={{ position: 'relative' }}>
         { this.state.campSites.length === 0 ?
@@ -50,7 +52,7 @@ class CampsiteList extends Component {
 
 function mapStateToProps(state) {
   return {
-    isModalOpen: state.isModalOpen
+    isModalOpen: state.modal.isModalOpen
   }
 }
 
