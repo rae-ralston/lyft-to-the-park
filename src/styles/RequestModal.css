@@ -14,8 +14,8 @@
   right: 0;
   background-image: linear-gradient(
     to bottom right,
-    rgba(0, 242, 96, .8),
-    rgba(5, 117, 230, .8)
+    rgba(0, 242, 96, .5),
+    rgba(5, 117, 230, .5)
   );
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
