@@ -4,7 +4,7 @@ import LoadingSpinner from '../HOC/LoadingSpinner'
 import CampsiteListing from '../components/CampsiteListing'
 import RequestModal from '../components/RequestModal'
 
-function CampsiteList(props) {
+const CampsiteList = (props) => {
   return (
     <div>
       {
