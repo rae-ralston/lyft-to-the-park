@@ -1,10 +1,9 @@
 import { TOGGLE_REQUEST_MODAL } from '../constants'
-import defaultModalState from '../data/defaultModalState'
 
-export default function modal (state = defaultModalState, action) {
+export default function modal (state = false, action) {
   switch (action.type) {
     case TOGGLE_REQUEST_MODAL:
-      return { ...state, isModalOpen: !state.isModalOpen }
+      return action.isModalOpen
 
     default:
       return state

@@ -7,7 +7,7 @@ export default class RequestModal extends Component {
     return (
       <div className="modal-backdrop">
         <div className="modal">
-          <span onClick={ () => this.props.toggleRequestModal() }>X</span>
+          <span onClick={ () => this.props.toggleRequestModal(false) }>X</span>
           <RequestForm getACar={ this.props.getACar } />
         </div>
       </div>

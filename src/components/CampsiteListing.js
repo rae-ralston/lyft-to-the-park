@@ -10,7 +10,7 @@ const CampsiteListing = (props) => {
         <p className="campsite__description">{ campsite.description }</p>
       </div>
       <div className="campsite__actCol">
-        <button className="campsite__btn" onClick={ () => props.toggleRequestModal() }>
+        <button className="campsite__btn" onClick={ () => props.toggleRequestModal(true) }>
           catch a lyft
         </button>
       </div>
