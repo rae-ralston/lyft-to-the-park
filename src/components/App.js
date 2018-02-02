@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CampsiteList from '../containers/CampsiteList'
+import CampsitesContainer from '../containers/CampsitesContainer'
 import '../styles/App.css';
 
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>California Camping <span role="img" aria-label="camping tent emoji">⛺️</span></h1>
-        <CampsiteList />
+        <CampsitesContainer />
       </div>
     )
   }

@@ -17,6 +17,6 @@
     rgba(5, 117, 230, .8)
   );
   -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
   padding: 20vh 20vw;
 }
