@@ -1,9 +1,10 @@
 ![!go outside](https://content.huckberry.com/assets/national-parks/national-parks-hero-fe8ac9f4230ffd16fde39c4561a59393c27d1aa55d85792f4af57f0fc84277ca.jpg)
-# You should go outside.
-**Lyft To The Park**
-An app that displays California regional parks and calls you a Lyft to help you get there. It uses the National Park Service, Google Geocoding, & Lyft API's.
+# You should probably go outside.
+**Lyft To The Park**  
+Is an app that displays California regional park information and can call you a Lyft to help you get there. It uses the National Park Service, Google Geocoding, & Lyft APIs.
 
-Tech Used: React, Redux, Redux-Thunk, Axios, Lyft SDK, React DOM.
+STACK: React, Redux, Redux-Thunk, Axios, Lyft SDK, React DOM.
+ADDITIONAL SKILLS USED: CSS animations, React HOC
 
 ## CONTRIBUTING
 ### Getting Up and Running
