@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LoadingSpinner from '../HOC/LoadingSpinner'
+import withLoadingSpinner from '../HOC/withLoadingSpinner'
 import CampsiteListing from '../components/CampsiteListing'
 import RequestModal from '../components/RequestModal'
 
@@ -24,4 +24,4 @@ const CampsiteList = (props) => {
 
 }
 
-export default LoadingSpinner(CampsiteList)
+export default withLoadingSpinner(CampsiteList)

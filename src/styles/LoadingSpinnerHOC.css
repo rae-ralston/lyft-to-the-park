@@ -1,4 +1,4 @@
-.sk-spinner-pulse {
+.spinner-pulse {
   width: 40px;
   height: 40px;
   margin: 40px auto;
@@ -9,11 +9,11 @@
   transform: translate(-50%, -50%);
 
   border-radius: 100%;
-  -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
-          animation: sk-pulseScaleOut 1s infinite ease-in-out;
+  -webkit-animation: pulseScaleOut 1s infinite ease-in-out;
+          animation: pulseScaleOut 1s infinite ease-in-out;
 }
 
-@-webkit-keyframes sk-pulseScaleOut {
+@-webkit-keyframes pulseScaleOut {
   0% {
     -webkit-transform: scale(0);
             transform: scale(0);
@@ -25,7 +25,7 @@
   }
 }
 
-@keyframes sk-pulseScaleOut {
+@keyframes pulseScaleOut {
   0% {
     -webkit-transform: scale(0);
             transform: scale(0);
