@@ -15,6 +15,7 @@
     - [Google Maps API](https://developers.google.com/maps/documentation/geocoding/get-api-key)
     - [National Park Service API](https://www.nps.gov/subjects/digital/nps-data-api.htm)
     - [Lyft API](https://www.lyft.com/developers)
+      - Note: You need a US phone number to get a Lyft API key.
 
 1. Copy the `.env_example` and rename it `.env`
     ```bash
